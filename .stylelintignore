@@ -1,0 +1,17 @@
+# ignore node_modules
+node_modules
+./node_modules
+
+# ignore artifacts:
+dist
+.dist
+build
+coverage
+out
+
+# ignore angular caches
+.angular
+.webpack
+
+# ignore plugins
+plugins

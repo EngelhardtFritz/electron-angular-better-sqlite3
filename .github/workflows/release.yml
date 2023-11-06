@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: read
+
+env:
+  APP_NAME: 'YourElectronApp'
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - name: npm ci
+        run: npm ci
+      - name: Build Package
+        run: npm run package:prod
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Prepare package for release
+        run: |
+          mv /out/${{ env.APP_NAME }}-win32-x64 /out/${{ env.APP_NAME }}
+          cd out/${{ env.APP_NAME }}
+          zip -r ${{ env.APP_NAME }}.zip .
+          cd ../../
+          mkdir release
+          mv ./out/${{ env.APP_NAME }}/${{ env.APP_NAME }}.zip ./release
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            release/*zip

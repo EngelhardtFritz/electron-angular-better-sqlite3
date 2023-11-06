@@ -1,0 +1,55 @@
+name: Semantic Release Main
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  semantic-release-main:
+    name: Semantic Versioning Main
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - name: Install dependencies
+        run: npm install -g semantic-release@22.0.7 @semantic-release/git@10.0.1 @semantic-release/changelog@6.0.3 @semantic-release/commit-analyzer@11.1.0 @semantic-release/release-notes-generator@12.1.0 @semantic-release/exec@6.0.3 conventional-changelog-conventionalcommits@7.0.2
+      - name: Execute Semantic Release Dry Run
+        id: semantic-release-dry-run
+        run: semantic-release --generate-notes false --dry-run
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set Next Release Version
+        run: |
+          echo "RELEASE_VERSION=${NEXT_RELEASE_VERSION#v}" >> $GITHUB_ENV
+      - name: Log Next Release Version
+        run: |
+          echo "$RELEASE_VERSION"
+      - name: Update Package Version
+        if: ${{ env.NEXT_RELEASE_VERSION != '' }}
+        run: |
+          npm version --no-git-tag-version --allow-same-version ${{ env.RELEASE_VERSION }}
+          cd workspaces/angular-app
+          npm version --no-git-tag-version --allow-same-version ${{ env.RELEASE_VERSION }}
+          cd ../shared-lib
+          npm version --no-git-tag-version --allow-same-version ${{ env.RELEASE_VERSION }}
+      - name: Execute Semantic Release
+        if: ${{ env.NEXT_RELEASE_VERSION != '' }}
+        run: semantic-release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

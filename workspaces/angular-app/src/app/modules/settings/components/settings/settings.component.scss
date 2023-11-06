@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  margin-right: calc(3rem);
+  width: calc(100% - 3rem);
+}
+
+.appSettings {
+  display: block;
+  height: 100%;
+  margin: auto;
+  max-width: 40vw;
+  min-width: 30vw;
+  padding: 0.5rem 1.5rem;
+
+  .generalSettings,
+  .readerSettings {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    app-dropdown,
+    app-dropdown2,
+    app-slider {
+      width: 20rem;
+    }
+
+    .syncLib {
+      display: grid;
+      gap: 0.5rem;
+    }
+  }
+
+  app-autocomplete {
+    margin-bottom: 0.5rem;
+    width: 20rem;
+  }
+
+  .tagWrapper {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5rem;
+  }
+}

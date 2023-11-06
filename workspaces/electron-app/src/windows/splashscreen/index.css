@@ -1,0 +1,109 @@
+@keyframes cycle-colors {
+  0% {
+    border-color: rgb(255 0 0);
+  }
+
+  25% {
+    border-color: hsl(90deg 100% 50%);
+  }
+
+  50% {
+    border-color: hsl(180deg 100% 50%);
+  }
+
+  75% {
+    border-color: hsl(270deg 100% 50%);
+  }
+
+  100% {
+    border-color: hsl(360deg 100% 50%);
+  }
+}
+
+@keyframes pulse {
+  to {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+}
+
+@keyframes pulse-image {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+* {
+  background-color: transparent;
+  margin: unset;
+  padding: unset;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.loader {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.loader img {
+  animation: pulse-image 2s linear infinite;
+  border-radius: 9999px;
+  height: 80%;
+  left: 10%;
+  position: relative;
+  top: 10%;
+  width: 80%;
+  z-index: 2;
+}
+
+.circle {
+  /* cycle-colors 6s linear infinite */
+  animation: pulse 3s linear infinite;
+  border: #00b7b7 solid 24px;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  content: ' ';
+  height: 140%;
+  left: -20%;
+  opacity: 0.6;
+  position: absolute;
+  top: -20%;
+  transform: scale(0.55);
+  width: 140%;
+  z-index: 1;
+}
+
+.circle.circleTwo {
+  --animation-delay: calc((3 / 4) * 1s);
+
+  animation-delay: var(--animation-delay);
+}
+
+.circle.circleThree {
+  --animation-delay: calc((3 / 4) * 2s);
+
+  animation-delay: var(--animation-delay);
+}
+
+.circle.circleFour {
+  --animation-delay: calc((3 / 4) * 3s);
+
+  animation-delay: var(--animation-delay);
+}

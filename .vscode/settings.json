@@ -1,0 +1,24 @@
+{
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": false,
+    "**/.angular": true,
+    "**/angular-app/dist": false,
+    "**/angular-app/.vscode": true,
+    "**/express-app/.dist": false,
+    "**/shared-lib/.dist": false
+  },
+  "stylelint.validate": ["css", "postcss", "scss"]
+}

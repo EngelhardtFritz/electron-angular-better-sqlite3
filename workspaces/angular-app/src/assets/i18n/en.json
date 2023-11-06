@@ -1,0 +1,150 @@
+{
+  "APP": {
+    "TITLE": "Toolbox"
+  },
+  "NAVIGATION": {
+    "ITEMS": {
+      "HOME": "Home",
+      "READER": "Manga / Manhwa Reader",
+      "SETTINGS": "Settings",
+      "PLACEHOLDER": "Placeholder"
+    },
+    "READER": {
+      "HOME": "Mangas",
+      "CONFIGURATION": "Manager",
+      "MANAGER": {
+        "LIBRARY": "Manage Libraries",
+        "LIBRARY_ENTRY": "Manage Mangas / Manhwas"
+      }
+    }
+  },
+  "LOADING": {
+    "TITLE": "Processing..."
+  },
+  "SETTINGS": {
+    "TITLE": "Preferences",
+    "GENERAL": {
+      "TITLE": "General",
+      "THEME": {
+        "TITLE": "Color Theme",
+        "DESCRIPTION": "Specifies the current app color theme.",
+        "DARK": "Dark",
+        "LIGHT": "Light"
+      },
+      "LOCALE": {
+        "TITLE": "Application Language",
+        "DESCRIPTION": "Specifies the current app language.",
+        "DE": "German",
+        "EN": "English"
+      }
+    },
+    "READER": {
+      "TITLE": "Manga / Manhwa Reader",
+      "SYNC_LIB": {
+        "TITLE": "Library synchronization",
+        "DESCRIPTION": "Specifies when the app will synchronize the Manga / Manwha libraries.",
+        "LABEL_ON_START": "Sync all libraries on app start",
+        "LABEL_ON_ADD": "Sync library on creation."
+      },
+      "DISPLAY_FORMAT": {
+        "TITLE": "Display format",
+        "DESCRIPTION": "Specifies the display format how the images are ordered.",
+        "SINGLE_PAGE": "Single page",
+        "LONG_STRIP": "Multi page"
+      },
+      "IMAGE_SIZE_TYPE": {
+        "TITLE": "Imagesize",
+        "DESCRIPTION": "Specifies the image size type of the app.\n If set to 'Adjusted' the app will use the use defined image width.",
+        "ORIGINAL": "Original",
+        "ADJUSTED": "Adjusted"
+      },
+      "MAX_IMAGE_WIDTH": {
+        "TITLE": "Max image width",
+        "DESCRIPTION": "Specifies the max width of images in % (percent)."
+      },
+      "IMAGE_MARGIN": {
+        "TITLE": "Image gap",
+        "DESCRIPTION": "Specifies the vertical image gap between images in px (pixels)."
+      },
+      "TAGS": {
+        "TITLE": "Hidden Tags",
+        "DESCRIPTION": "Hides all Mangas / Manhwas with the specified Tag(s).",
+        "ADD": "Add"
+      },
+      "LIBRARY_ENTRY_LAYOUT": {
+        "TITLE": "Manga / Manhwa Library Layout",
+        "DESCRIPTION": "Specifies the displayed layout of the Manga / Manhwa reader.",
+        "DEFAULT": "Default",
+        "COMPACT": "Compact",
+        "GRID": "Grid"
+      }
+    }
+  },
+  "READER": {
+    "ADD_LIBRARY": "Add Library",
+    "LIBRARY_ENTRY": {
+      "TITLE": "Title",
+      "RATING": "Rating",
+      "FAVORITE": "Favorite",
+      "CHAPTER_COUNT": "Chapters",
+      "TAGS": "Tags",
+      "NO_TAGS": "No tags set",
+      "CHAPTERS": "Chapters",
+      "CONTINUE": "Continue",
+      "FIRST_CHAPTER": "Read first chapter",
+      "SUMMARY": "Summary",
+      "AUTHOR": "Author",
+      "ARTIST": "Artist",
+      "PUBLICATION_STATE": {
+        "TITLE": "Publication state",
+        "0": "Unknown",
+        "1": "Ongoing",
+        "2": "Hiatus",
+        "3": "Cancelled",
+        "4": "Completed"
+      },
+      "PUBLICATION_YEAR": "Publication year"
+    },
+    "SEARCH": {
+      "ADVANCED": "Advanced",
+      "SORT_BY": {
+        "TITLE": "Sort by",
+        "0": "Title Ascending",
+        "1": "Title Descending",
+        "2": "Rating Ascending",
+        "3": "Rating Descending",
+        "4": "Favorite Ascending",
+        "5": "Favorite Descending",
+        "6": "Chapters Ascending",
+        "7": "Chapters Descending"
+      },
+      "BY_TAGS": "Search by Tags",
+      "TAG_OPTIONS": {
+        "INCLUDE_MODE": "Tag include mode",
+        "EXCLUDE_MODE": "Tag exclude mode",
+        "AND": "And",
+        "OR": "Or"
+      },
+      "APPLY": "Apply",
+      "RESET": "Reset",
+      "INCLUDE_STATE": {
+        "TITLE": "Set sorting criteria",
+        "FAVORITE": "Is favorite"
+      },
+      "SORT_STATE": "Set sorting order (Multi select)"
+    },
+    "PAGINATION": {
+      "PREV": "Previous Page",
+      "NEXT": "Next Page"
+    },
+    "CURRENT_CHAPTER": "Current chapter",
+    "SET_UNREAD": "Set unread",
+    "MANAGER": {
+      "LIBRARY": {
+        "VISIBLE": "All Manga / Manhwa of the library will be shown in the reader.",
+        "PATH": "Library path",
+        "REMOVE": "Remove library"
+      }
+    }
+  }
+}

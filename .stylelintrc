@@ -1,0 +1,30 @@
+{
+  "plugins": ["stylelint-order"],
+  "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines", "stylelint-prettier/recommended"],
+  "rules": {
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-order": null,
+    "order/properties-alphabetical-order": true,
+    "max-nesting-depth": [
+      6,
+      {
+        "ignore": ["pseudo-classes"]
+      }
+    ],
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": ["attribute", "class", "id"]
+      }
+    ],
+    "selector-class-pattern": null,
+    "no-empty-source": null,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignore": ["custom-elements", "default-namespace"]
+      }
+    ],
+    "selector-max-compound-selectors": 5
+  }
+}

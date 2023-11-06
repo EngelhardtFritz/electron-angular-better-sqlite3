@@ -1,0 +1,14 @@
+{
+  "name": "shared-lib",
+  "version": "0.0.0",
+  "description": "",
+  "main": ".dist/index.js",
+  "scripts": {
+    "build": "tsc --build .",
+    "build:prod": "tsc --build .",
+    "watch": "tsc --build . --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

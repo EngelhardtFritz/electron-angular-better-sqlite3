@@ -1,0 +1,20 @@
+{
+  "development": {
+    "id": "development",
+    "logFileName": "dev-main.log",
+    "logLevel": "debug",
+    "openDevTools": true,
+    "isIconAvailable": true,
+    "angularPort": 4200,
+    "devPath": "D:\\Entwicklungsprojekte\\VSCode\\manga-reader"
+  },
+  "production": {
+    "id": "production",
+    "logFileName": "main.log",
+    "logLevel": "debug",
+    "openDevTools": true,
+    "isIconAvailable": false,
+    "angularPort": 0,
+    "devPath": null
+  }
+}

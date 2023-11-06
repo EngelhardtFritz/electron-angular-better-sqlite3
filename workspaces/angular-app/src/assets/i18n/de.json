@@ -1,0 +1,150 @@
+{
+  "APP": {
+    "TITLE": "Toolbox"
+  },
+  "NAVIGATION": {
+    "ITEMS": {
+      "HOME": "Startseite",
+      "READER": "Manga / Manhwa Reader",
+      "SETTINGS": "Einstellungen",
+      "PLACEHOLDER": "Platzhalter"
+    },
+    "READER": {
+      "HOME": "Mangas",
+      "CONFIGURATION": "Verwalten",
+      "MANAGER": {
+        "LIBRARY": "Bibliotheken Verwalten",
+        "LIBRARY_ENTRY": "Mangas / Manhwas Verwalten"
+      }
+    }
+  },
+  "LOADING": {
+    "TITLE": "Verarbeite..."
+  },
+  "SETTINGS": {
+    "TITLE": "Einstellungen",
+    "GENERAL": {
+      "TITLE": "Allgemein",
+      "THEME": {
+        "TITLE": "Farbschema",
+        "DESCRIPTION": "Legt das aktuelle Farbschema der Anwendung fest.",
+        "DARK": "Dunkel",
+        "LIGHT": "Hell"
+      },
+      "LOCALE": {
+        "TITLE": "Anwendungssprache",
+        "DESCRIPTION": "Legt die aktuelle Sprache der Anwendung fest.",
+        "DE": "Deutsch",
+        "EN": "Englisch"
+      }
+    },
+    "READER": {
+      "TITLE": "Manga / Manhwa Reader",
+      "SYNC_LIB": {
+        "TITLE": "Bibliothek Synchronisieren",
+        "DESCRIPTION": "Lege fest, wie die Manga / Manhwa Bibliotheken synchronisiert werden.",
+        "LABEL_ON_START": "Synchronisiere alle Bibliotheken bei App start.",
+        "LABEL_ON_ADD": "Synchronisiere beim Hinzufügen einer neuen Bibliothek."
+      },
+      "DISPLAY_FORMAT": {
+        "TITLE": "Anordnung der Bilder",
+        "DESCRIPTION": "Legt die Art der Bilderanordnung fest.",
+        "SINGLE_PAGE": "Ein Bild pro Seite",
+        "LONG_STRIP": "Auf einer Seite"
+      },
+      "IMAGE_SIZE_TYPE": {
+        "TITLE": "Bildgröße",
+        "DESCRIPTION": "Legt die Darstellung der Bildgröße fest.\n Wird 'Angepasst' ausgewählt, werden alle Bilder auf die festgelegte Breite angepasst.",
+        "ORIGINAL": "Original",
+        "ADJUSTED": "Angepasst"
+      },
+      "MAX_IMAGE_WIDTH": {
+        "TITLE": "Maximale Bildbreite",
+        "DESCRIPTION": "Legt die maximale Breite der Bilder in % (Prozent) fest."
+      },
+      "IMAGE_MARGIN": {
+        "TITLE": "Bilderabstand",
+        "DESCRIPTION": "Legt den vertikalen Abstand zwischen den einzelnen Bildern in px (Pixeln) fest."
+      },
+      "TAGS": {
+        "TITLE": "Versteckte Tags",
+        "DESCRIPTION": "Versteckt alle Mangas / Manhwas mit den festgelegten Tag(s).",
+        "ADD": "Hinzufügen"
+      },
+      "LIBRARY_ENTRY_LAYOUT": {
+        "TITLE": "Layout der Manga / Manhwa",
+        "DESCRIPTION": "Legt das Layout für die Darstellung der Manga / Manhwa fest.",
+        "DEFAULT": "Standard",
+        "COMPACT": "Kompakt",
+        "GRID": "Grid"
+      }
+    }
+  },
+  "READER": {
+    "ADD_LIBRARY": "Bibliothek hinzufügen",
+    "LIBRARY_ENTRY": {
+      "TITLE": "Titel",
+      "RATING": "Bewertung",
+      "FAVORITE": "Favorit",
+      "CHAPTER_COUNT": "Kapitelanzahl",
+      "TAGS": "Tags",
+      "NO_TAGS": "Keine Tags verfügbar",
+      "CHAPTERS": "Kapitel",
+      "CONTINUE": "Weiterlesen",
+      "FIRST_CHAPTER": "Erstes Kapitel lesen",
+      "SUMMARY": "Zusammenfassung",
+      "AUTHOR": "Autor",
+      "ARTIST": "Künstler",
+      "PUBLICATION_STATE": {
+        "TITLE": "Publikationsstatus",
+        "0": "Unbekannt",
+        "1": "Laufend",
+        "2": "Pausiert",
+        "3": "Abgebrochen",
+        "4": "Abgeschlossen"
+      },
+      "PUBLICATION_YEAR": "Publikationsjahr"
+    },
+    "SEARCH": {
+      "ADVANCED": "Erweitert",
+      "SORT_BY": {
+        "TITLE": "Sortieren",
+        "0": "Titel Aufsteigend",
+        "1": "Titel Absteigend",
+        "2": "Bewertung Aufsteigend",
+        "3": "Bewertung Absteigend",
+        "4": "Favorit Aufsteigend",
+        "5": "Favorit Absteigend",
+        "6": "Kapitelzahl Aufsteigend",
+        "7": "Kapitelzahl Absteigend"
+      },
+      "BY_TAGS": "Nach Tags Suchen",
+      "TAG_OPTIONS": {
+        "INCLUDE_MODE": "Modus für inkludierte Tags",
+        "EXCLUDE_MODE": "Modus für exkludierte Tags",
+        "AND": "Und",
+        "OR": "Oder"
+      },
+      "APPLY": "Suchen",
+      "RESET": "Reset",
+      "INCLUDE_STATE": {
+        "TITLE": "Sortierkriterien setzen",
+        "FAVORITE": "Ist Favorit"
+      },
+      "SORT_STATE": "Sortierreihenfolge setzen (Mehrauswahl möglich)"
+    },
+    "PAGINATION": {
+      "PREV": "Nächste Seite",
+      "NEXT": "Vorherige Seite"
+    },
+    "CURRENT_CHAPTER": "Aktuelles Kapitel",
+    "SET_UNREAD": "Ungelesen markieren",
+    "MANAGER": {
+      "LIBRARY": {
+        "VISIBLE": "Alle Manga / Manhwa der Bibliothek werden in dem Reader angezeigt.",
+        "PATH": "Pfad der Bibliothek",
+        "REMOVE": "Bibliothek entfernen"
+      }
+    }
+  }
+}
