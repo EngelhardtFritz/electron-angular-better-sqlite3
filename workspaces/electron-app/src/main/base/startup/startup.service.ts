@@ -1,8 +1,8 @@
 import { singleton } from 'tsyringe';
-import { isAppReady } from '../utils/ready-state.provider';
 import { DatabaseProvider } from '../database/database.provider';
 import { Logger } from '../utils/logger';
 import { AppVersionUpgradeWorker } from './app-version/app-version-upgrade.worker';
+import { AppStateProvider } from './app-states/app-state.provider';
 
 @singleton()
 export class StartupService {
@@ -18,6 +18,6 @@ export class StartupService {
     await this.appVersionUpgradeWorker.checkAppVersion();
 
     Logger.verbose(`[StartupService#doWork] Set app ready.`);
-    isAppReady.next(true);
+    AppStateProvider.isReady.next(true);
   }
 }
