@@ -6,7 +6,7 @@ on:
       - '*'
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   APP_NAME: 'YourElectronApp'
@@ -14,18 +14,16 @@ env:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
+    strategy:
+      matrix:
+        os: ['windows-latest', 'ubuntu-latest']
+    runs-on: ${{ matrix.os }}
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,20 +31,59 @@ jobs:
           node-version: 18.x
       - name: npm ci
         run: npm ci
-      - name: Build Package
-        run: npm run package:prod
+      - name: (windows-latest) Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11.3'
+      - name: Build Package With Retry
+        uses: nick-fields/retry@v2.9.0
+        with:
+          timeout_minutes: 6
+          max_attempts: 2
+          retry_on: error
+          command: npm run package:prod
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Prepare package for release
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: (ubuntu-latest) Prepare package for release
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         run: |
-          mv /out/${{ env.APP_NAME }}-win32-x64 /out/${{ env.APP_NAME }}
-          cd out/${{ env.APP_NAME }}
-          zip -r ${{ env.APP_NAME }}.zip .
-          cd ../../
+          cd out 
+          mv ${{ env.APP_NAME }}-linux-x64 ${{ env.APP_NAME }}
+          zip -r ${{ env.APP_NAME }}-linux-x64.zip ${{ env.APP_NAME }}
+      - name: (ubuntu-latest) Zip And Move Linux Release
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: |
           mkdir release
-          mv ./out/${{ env.APP_NAME }}/${{ env.APP_NAME }}.zip ./release
+          mv ./out/${{ env.APP_NAME }}-linux-x64.zip ./release
+      - name: (windows-latest) Prepare package for release
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: |
+          cd out 
+          Rename-Item -Path ${{ env.APP_NAME }}-win32-x64 -NewName ${{ env.APP_NAME }}
+          Compress-Archive -Path ${{ env.APP_NAME }} -Destination ${{ env.APP_NAME }}-win32-x64.zip
+      - name: (windows-latest) Zip And Move Windows Release
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: |
+          mkdir release
+          Move-Item -Path out\${{ env.APP_NAME }}-win32-x64.zip -Destination release\${{ env.APP_NAME }}-win32-x64.zip
+      - name: Get Release Notes
+        uses: actions/github-script@v6
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        with:
+          script: |
+            const { RELEASE_TAG, COMMIT_MESSAGE } = process.env;
+            const releaseTag = RELEASE_TAG.replace('v', '');
+            const commitMessagePrefix = `chore(release): ${releaseTag}\n\n`;
+            const releaseNotes = COMMIT_MESSAGE.replace(commitMessagePrefix, '');
+            console.log(`releaseNotes: '${releaseNotes}'`);
+            core.exportVariable('RELEASE_NOTES', releaseNotes);
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
+          body: ${{ env.RELEASE_NOTES }}
           files: |
             release/*zip

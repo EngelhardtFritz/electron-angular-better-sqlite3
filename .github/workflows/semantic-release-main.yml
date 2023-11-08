@@ -3,23 +3,16 @@ name: Semantic Release Main
 on:
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
   semantic-release-main:
-    name: Semantic Versioning Main
+    name: Semantic Release Main
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,8 +24,8 @@ jobs:
         id: semantic-release-dry-run
         run: semantic-release --generate-notes false --dry-run
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Set Next Release Version
         run: |
           echo "RELEASE_VERSION=${NEXT_RELEASE_VERSION#v}" >> $GITHUB_ENV
@@ -42,14 +35,14 @@ jobs:
       - name: Update Package Version
         if: ${{ env.NEXT_RELEASE_VERSION != '' }}
         run: |
-          npm version --no-git-tag-version --allow-same-version ${{ env.RELEASE_VERSION }}
+          npm version --no-git-tag-version --allow-same-version --no-commit-hooks ${{ env.RELEASE_VERSION }}
           cd workspaces/angular-app
-          npm version --no-git-tag-version --allow-same-version ${{ env.RELEASE_VERSION }}
+          npm version --no-git-tag-version --allow-same-version --no-commit-hooks ${{ env.RELEASE_VERSION }}
           cd ../shared-lib
-          npm version --no-git-tag-version --allow-same-version ${{ env.RELEASE_VERSION }}
+          npm version --no-git-tag-version --allow-same-version --no-commit-hooks ${{ env.RELEASE_VERSION }}
       - name: Execute Semantic Release
         if: ${{ env.NEXT_RELEASE_VERSION != '' }}
         run: semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
