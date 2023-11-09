@@ -20,7 +20,7 @@ class MsiWizardProvider {
   constructor() {
     this.appPath = join(
       process.cwd(),
-      `out/${MsiInforProvider.getAppName()}-win32-x64`
+      `out/${MsiInfoProvider.getAppName()}-win32-x64`
     );
   }
 
@@ -39,9 +39,9 @@ class MsiWizardProvider {
     return new MSICreator({
       appDirectory: this.appPath,
       outputDirectory: MsiWizardProvider.MSI_OUTPUT_PATH,
-      exe: MsiInforProvider.getExecutableName(),
-      name: MsiInforProvider.getAppName(),
-      icon: MsiInforProvider.getIconPath(),
+      exe: MsiInfoProvider.getExecutableName(),
+      name: MsiInfoProvider.getAppName(),
+      icon: MsiInfoProvider.getIconPath(),
       manufacturer: this.packageAuthorName,
       description: this.packageDescription,
       version: this.packageVersion,
@@ -101,7 +101,7 @@ class MsiWizardProvider {
   }
 }
 
-class MsiInforProvider {
+class MsiInfoProvider {
   public static getAppName(): string {
     const appName = config.packagerConfig?.name;
     if (appName !== undefined) {
@@ -109,7 +109,7 @@ class MsiInforProvider {
     }
 
     throw Error(
-      `[MsiInforProvider] No app name has been set in the forge config.`
+      `[MsiInfoProvider] No app name has been set in the forge config.`
     );
   }
 
@@ -122,7 +122,7 @@ class MsiInforProvider {
     }
 
     throw Error(
-      `[MsiInforProvider] No executable name has been set in the forge config.`
+      `[MsiInfoProvider] No executable name has been set in the forge config.`
     );
   }
 
@@ -133,7 +133,7 @@ class MsiInforProvider {
     }
 
     throw Error(
-      `[MsiInforProvider] No iconPath has been set in the forge config.`
+      `[MsiInfoProvider] No iconPath has been set in the forge config.`
     );
   }
 }
