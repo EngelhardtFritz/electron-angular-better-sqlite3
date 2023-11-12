@@ -2,18 +2,25 @@
   "name": "your-app-name",
   "productName": "Your App Name",
   "version": "0.0.0",
-  "description": "My Electron application description",
+  "description": "Your Electron application description",
   "main": "./.webpack/main",
-  "keywords": [],
   "author": {
     "name": "Fritz Engelhardt",
     "email": "87179608+EngelhardtFritz@users.noreply.github.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/EngelhardtFritz/manga-reader.git"
   },
+  "keywords": [
+    "electron",
+    "angular",
+    "typescript",
+    "webpack",
+    "ngrx",
+    "template"
+  ],
   "scripts": {
     "--------------------------- DEV SCRIPTS ------------------------------": "",
     "start": "npm-run-all --parallel watch:shared watch:angular watch:electron",

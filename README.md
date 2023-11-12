@@ -1,6 +1,6 @@
-![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FEngelhardtFritz%2Fmanga-reader%2Fraw%2Fmain%2Fpackage.json&query=%24.version)
-![Release](https://github.com/EngelhardtFritz/manga-reader/actions/workflows/release.yml/badge.svg)
-![Semantic Release](https://github.com/EngelhardtFritz/manga-reader/actions/workflows/semantic-release-main.yml/badge.svg)
+![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2FEngelhardtFritz%2Felectron-angular-better-sqlite3%2Fraw%2Fmain%2Fpackage.json&query=%24.version&label=Version)
+![Release](https://github.com/EngelhardtFritz/electron-angular-better-sqlite3/actions/workflows/release.yml/badge.svg)
+![Semantic Release](https://github.com/EngelhardtFritz/electron-angular-better-sqlite3/actions/workflows/semantic-release-main.yml/badge.svg)
 
 # YourElectronApp
 
@@ -26,7 +26,7 @@ The app provides a set of three pre-defined workspaces:
 The angular-app template includes the [@ngrx](https://ngrx.io/) dependencies for reactive state management.
 
 To debug the @ngrx state the [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=de) are required.
-This tool has to be downloaded and the extension should be copied to `workspaces/electron-app/plugins`. Create the folder if it does not exist yet.
+Download and extract this extension to `workspaces/electron-app/plugins`. Create the folder if it does not exist yet.
 
 Adjust the path to the plugin in `workspaces/electron-app/src/main/windows/main.ts` where all plugins can be loaded. _**Important**_: Extensions should only be used in development for debugging purposes as they are out of scope for electron!
 
@@ -46,16 +46,16 @@ This repository includes two prepared workflows capable of creating releases for
 (Note: The initial version will always be _1.0.0_ so in case you need a release <_1.0.0_ you should use other plugins.)
 
 To utilize Semantic Release your commits should follow the [Conventional Commit Guidelines](https://www.conventionalcommits.org/en/v1.0.0/).
-When using this schema the workflows will automatically create/updage the `CHANGELOG.md` file depending on the commits included in a release.
+When using this schema the workflows will automatically create/update the `CHANGELOG.md` file depending on the commits included in a release.
 
 Semantic Release will create a tag including the new version by following the [Semantic Versioning](https://semver.org/).
 
 ### Release
 
-The release workflow currently executes the _package:prod_ script to build portable apps for the matrix of Linux and Windows.
+The release workflow executes the _package:prod_ script to build portable apps for the matrix of Linux and Windows.
 
 The resulting folders are zipped and uploaded as a release directly to GitHub.
-The release directly includes the relevant changelog parts as release notes taken from the release commit message.
+The release includes the relevant changelog parts as release notes taken from the release commit message.
 
 ## How To's
 
