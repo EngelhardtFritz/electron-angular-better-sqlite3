@@ -11,8 +11,8 @@ export class MainWindowStarter {
       .pipe(
         map((isReady) => {
           if (isReady && !this.started) {
-            onReady();
             this.started = true;
+            onReady();
           }
         })
       )

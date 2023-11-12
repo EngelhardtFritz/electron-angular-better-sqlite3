@@ -9,6 +9,10 @@ import * as path from 'node:path';
 // whether you're running in development or production).
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
+/**
+ * Shows a simple browser window and loads the `workspaces\electron-app\src\windows\splashscreen\index.html`.
+ * The browser window automatically adjusts to the client screen size.
+ */
 @singleton()
 export class SplashscreenWindowProvider {
   private _window?: BrowserWindow;

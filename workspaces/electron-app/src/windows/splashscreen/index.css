@@ -1,25 +1,3 @@
-@keyframes cycle-colors {
-  0% {
-    border-color: rgb(255 0 0);
-  }
-
-  25% {
-    border-color: hsl(90deg 100% 50%);
-  }
-
-  50% {
-    border-color: hsl(180deg 100% 50%);
-  }
-
-  75% {
-    border-color: hsl(270deg 100% 50%);
-  }
-
-  100% {
-    border-color: hsl(360deg 100% 50%);
-  }
-}
-
 @keyframes pulse {
   to {
     opacity: 0;
@@ -74,7 +52,6 @@ html {
 }
 
 .circle {
-  /* cycle-colors 6s linear infinite */
   animation: pulse 3s linear infinite;
   border: #00b7b7 solid 24px;
   border-radius: 9999px;

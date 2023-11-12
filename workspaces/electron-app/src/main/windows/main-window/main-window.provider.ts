@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
 import { Logger } from '../../base/utils/logger';
-import { BrowserWindow, app, nativeImage, ipcMain } from 'electron';
+import { BrowserWindow, app, nativeImage, ipcMain, screen } from 'electron';
 import { ConfigProvider } from '../../base/utils/config.provider';
 import * as path from 'node:path';
 
@@ -9,6 +9,9 @@ import * as path from 'node:path';
 // whether you're running in development or production).
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
+/**
+ * Shows a browser window and loads the angular-app depending on prod or dev configuration.
+ */
 @singleton()
 export class MainWindowProvider {
   private _window?: BrowserWindow;
@@ -29,13 +32,16 @@ export class MainWindowProvider {
   }
 
   private configureWindow(): BrowserWindow {
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+    const defaultHeight = height / 1.5;
+    const defaultWidth = width / 1.5;
+
     this._window = new BrowserWindow({
-      height: 720,
-      width: 1280,
+      height: defaultHeight,
+      width: defaultWidth,
       minHeight: 360,
       minWidth: 640,
       show: false,
-      // frame: false,
       icon: this.loadIcon(),
       backgroundColor: '#FFFFFF',
       webPreferences: {
