@@ -26,13 +26,24 @@ export class ConfigProvider {
       currentEnvironment = 'development';
     }
 
-    const appConfigs = fs.readJsonSync(path.join(__dirname, 'config.json'));
-    const defaultConfig = appConfigs.development;
-    const currentConfig = appConfigs[currentEnvironment];
+    try {
+      const appConfigs = fs.readJsonSync(path.join(__dirname, 'config.json'));
+      const defaultConfig = appConfigs.development;
+      const currentConfig = appConfigs[currentEnvironment];
 
-    this._appConfig =
-      currentEnvironment === 'development'
-        ? defaultConfig
-        : _.merge(defaultConfig, currentConfig);
+      this._appConfig =
+        currentEnvironment === 'development'
+          ? defaultConfig
+          : _.merge(defaultConfig, currentConfig);
+    } catch (err) {
+      // File does not exist, return default prod config
+      this._appConfig = {
+        id: 'production',
+        isIconAvailable: true,
+        logFileName: 'main.log',
+        openDevTools: false,
+        logLevel: 'error',
+      } as AppConfig;
+    }
   }
 }

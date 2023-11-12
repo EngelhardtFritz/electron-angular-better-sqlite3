@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
 import { Logger } from '../../base/utils/logger';
-import { BrowserWindow, screen } from 'electron';
+import { BrowserWindow, app, screen } from 'electron';
 import { ConfigProvider } from '../../base/utils/config.provider';
 import * as path from 'node:path';
 
@@ -60,7 +60,7 @@ export class SplashscreenWindowProvider {
   }
 
   private configureRenderer(): void {
-    if (this.configProvider.appConfig.id === 'development') {
+    if (!app.isPackaged) {
       // Dev mode, take advantage of the live reload by loading local URL
       this._window?.loadFile(
         'workspaces/electron-app/src/windows/splashscreen/index.html'

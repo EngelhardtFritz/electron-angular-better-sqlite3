@@ -63,7 +63,7 @@ export class Logger {
           filename: this.getLogFilename(),
           level: this.configProvider.appConfig.logLevel,
           maxsize: 10000000, // is equal to 10mb
-          maxFiles: 10,
+          maxFiles: 5,
           tailable: true,
           format: winston.format.combine(
             winston.format.timestamp(),
@@ -75,7 +75,7 @@ export class Logger {
 
     // If we're not in production then log also to the `console` with the format:
     // `[${info.timestamp}] [${info.level}]: ${info.message} JSON.stringify({ ...rest }) `
-    if (this.configProvider.appConfig.id === 'development') {
+    if (!app.isPackaged) {
       this._logger.add(
         new winston.transports.Console({
           stderrLevels: ['error', 'warn'],
@@ -94,7 +94,7 @@ export class Logger {
    */
   private getLogFilename() {
     let filename = this.configProvider.appConfig.logFileName;
-    if (this.configProvider.appConfig.id === 'production') {
+    if (app.isPackaged) {
       const appName = app.getName();
       if (process.platform == 'linux') {
         filename = `.config/${appName}/${filename}`;

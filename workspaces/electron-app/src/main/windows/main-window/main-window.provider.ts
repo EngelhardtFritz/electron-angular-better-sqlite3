@@ -56,7 +56,7 @@ export class MainWindowProvider {
   }
 
   private configureRenderer(): void {
-    if (this.configProvider.appConfig.id === 'development') {
+    if (!app.isPackaged) {
       // Dev mode, take advantage of the live reload by loading local URL
       this._window?.loadURL(
         `http://localhost:${this.configProvider.appConfig.angularPort}`

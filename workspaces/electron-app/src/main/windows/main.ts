@@ -60,7 +60,9 @@ export class Main {
   }
 
   async onReady() {
-    if (this.configProvider.appConfig.id === 'development') {
+    Logger.debug(`[Main#onReady] App isPackaged: ${app.isPackaged}`);
+    if (!app.isPackaged) {
+      // Absolute path to extension folder
       const pathToReduxDevTools =
         'D:\\Entwicklungsprojekte\\VSCode\\manga-reader\\workspaces\\electron-app\\plugins\\redux_dev_tools_3_1_3';
       await session.defaultSession.loadExtension(pathToReduxDevTools, {
