@@ -132,9 +132,16 @@ export class Logger {
   private consoleFormat = winston.format.printf(
     (data: winston.Logform.TransformableInfo) => {
       const preparedData = this.prepareLogData(data);
+
+      let spaces = '';
+      const levelSize = preparedData.level.length;
+      for (let i = levelSize; i < 7; i++) {
+        spaces += ` `;
+      }
+
       return `[${preparedData.timestamp}] [${
         preparedData.level
-      }] [electron] : ${preparedData.message} : ${JSON.stringify(
+      }]${spaces} [electron] : ${preparedData.message} : ${JSON.stringify(
         preparedData.meta
       )}`;
     }
