@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap } from 'rxjs/operators';
 import { SettingsActions } from './settings.actions';
 import { LanguageService } from 'src/app/shared/services/language.service';
-import { SettingsApiService } from '../services/settings-api.service';
+import { SettingsApiService } from '../../modules/settings/services/settings-api.service';
 import { AppSettings } from 'shared-lib';
 
 @Injectable()
