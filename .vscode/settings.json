@@ -4,7 +4,7 @@
   "editor.insertSpaces": false,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.stylelint": true
+    "source.fixAll.stylelint": "explicit"
   },
   "files.exclude": {
     "**/.git": true,
