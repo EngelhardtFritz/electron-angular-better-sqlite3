@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 18.x
       - name: Install dependencies
-        run: npm install -g semantic-release@22.0.7 @semantic-release/git@10.0.1 @semantic-release/changelog@6.0.3 @semantic-release/commit-analyzer@11.1.0 @semantic-release/release-notes-generator@12.1.0 @semantic-release/exec@6.0.3 conventional-changelog-conventionalcommits@7.0.2
+        run: npm install -g semantic-release@22.0.12 @semantic-release/git@10.0.1 @semantic-release/changelog@6.0.3 @semantic-release/commit-analyzer@11.1.0 @semantic-release/release-notes-generator@12.1.0 @semantic-release/exec@6.0.3 conventional-changelog-conventionalcommits@7.0.2
       - name: Execute Semantic Release Dry Run
         id: semantic-release-dry-run
         run: semantic-release --generate-notes false --dry-run
