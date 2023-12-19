@@ -24,14 +24,14 @@ export class MainWindowProvider {
     Logger.verbose(`[MainWindow] constructor called`);
   }
 
-  init(): BrowserWindow {
-    const window = this.configureWindow();
+  async init(): Promise<BrowserWindow> {
+    const window = await this.configureWindow();
     this.configureRenderer();
 
     return window;
   }
 
-  private configureWindow(): BrowserWindow {
+  private async configureWindow(): Promise<BrowserWindow> {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
     const defaultHeight = height / 1.5;
     const defaultWidth = width / 1.5;

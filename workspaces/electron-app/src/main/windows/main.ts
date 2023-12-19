@@ -76,12 +76,12 @@ export class Main {
     // Startup app windows and services
     if (!Main._splashscreenWindow) {
       Logger.debug(`[Main#onReady] Create splashscreen window`);
-      Main._splashscreenWindow = this.splashscreenWindowProvider.init();
+      Main._splashscreenWindow = await this.splashscreenWindowProvider.init();
     }
 
     if (!Main._mainWindow) {
-      this.mainWindowStarter.start(() => {
-        Main._mainWindow = this.mainWindowProvider.init();
+      this.mainWindowStarter.start(async () => {
+        Main._mainWindow = await this.mainWindowProvider.init();
         Main._splashscreenWindow.close();
       });
     }

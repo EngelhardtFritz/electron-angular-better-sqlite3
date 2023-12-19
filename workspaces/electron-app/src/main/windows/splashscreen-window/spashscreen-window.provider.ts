@@ -1,6 +1,6 @@
 import { singleton } from 'tsyringe';
 import { Logger } from '../../base/utils/logger';
-import { BrowserWindow, app, screen } from 'electron';
+import { BrowserWindow, app, nativeImage, screen } from 'electron';
 import { ConfigProvider } from '../../base/utils/config.provider';
 import * as path from 'node:path';
 
@@ -25,14 +25,14 @@ export class SplashscreenWindowProvider {
     Logger.verbose(`[SplashscreenWindow] constructor called`);
   }
 
-  init(): BrowserWindow {
-    const window = this.configureWindow();
+  async init(): Promise<BrowserWindow> {
+    const window = await this.configureWindow();
     this.configureRenderer();
 
     return window;
   }
 
-  private configureWindow(): BrowserWindow {
+  private async configureWindow(): Promise<BrowserWindow> {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
     const divisor = 4;
     const screenSize = width > height ? height / divisor : width / divisor;
@@ -49,12 +49,18 @@ export class SplashscreenWindowProvider {
       frame: false,
       resizable: false,
       transparent: true,
+      icon: this.loadIcon(),
       backgroundColor: '#00FFFFFF',
       webPreferences: {
         preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
       },
     });
     this._window.center();
+
+    this._window.setAlwaysOnTop(true);
+    this._window.show();
+    this._window.setAlwaysOnTop(false);
+    app.focus();
 
     return this._window;
   }
@@ -98,5 +104,19 @@ export class SplashscreenWindowProvider {
         this._window?.focus();
       });
     });
+  }
+
+  private loadIcon(): Electron.NativeImage | undefined {
+    let iconObject;
+    if (this.configProvider.appConfig.isIconAvailable) {
+      const iconPath = path.join(__dirname, 'icons/icon.png');
+      Logger.debug('Icon Path', iconPath);
+      iconObject = nativeImage.createFromPath(iconPath);
+      // Change dock icon on MacOS
+      if (iconObject && process.platform === 'darwin') {
+        app.dock.setIcon(iconObject);
+      }
+    }
+    return iconObject;
   }
 }

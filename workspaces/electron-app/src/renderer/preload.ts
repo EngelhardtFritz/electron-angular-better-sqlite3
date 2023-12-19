@@ -13,10 +13,13 @@ contextBridge.exposeInMainWorld('api', {
     }
   },
   receive: <Out>(channel: string, callback: (output: Out) => void) => {
-    // Strip event as it includes `sender`
-    ipcRenderer.on(channel, (_event: IpcRendererEvent, ...parameters: any[]) =>
-      callback(parameters[0])
-    );
+    if (WindowApiConst.RECEIVING_SAFE_CHANNELS.includes(channel)) {
+      ipcRenderer.on(
+        channel,
+        (_event: IpcRendererEvent, ...parameters: any[]) =>
+          callback(parameters[0])
+      );
+    }
   },
   invoke: <In>(channel: string, input: In) => {
     if (WindowApiConst.INVOKING_SAFE_CHANNELS.includes(channel)) {
