@@ -52,22 +52,34 @@ export class MainWindowProvider {
     this._window.maximize();
     this._window.show();
 
-    return this._window;
+    return Promise.resolve(this._window);
   }
 
   private configureRenderer(): void {
     if (!app.isPackaged) {
       // Dev mode, take advantage of the live reload by loading local URL
-      this._window?.loadURL(
-        `http://localhost:${this.configProvider.appConfig.angularPort}`
-      );
+      this._window
+        ?.loadURL(
+          `http://localhost:${this.configProvider.appConfig.angularPort}`
+        )
+        .catch((error: Error) => {
+          Logger.error(
+            `[MainWindowProvider#configureRenderer] Failed to load DEV url `,
+            error
+          );
+        });
     } else {
       // Else mode, we simply load angular bundle
       const indexPath = path.join(
         __dirname,
         '../renderer/angular_window/index.html'
       );
-      this._window?.loadURL(`file://${indexPath}`);
+      this._window?.loadURL(`file://${indexPath}`).catch((error: Error) => {
+        Logger.error(
+          `[MainWindowProvider#configureRenderer] Failed to load PROD index.html file `,
+          error
+        );
+      });
     }
 
     Logger.debug(

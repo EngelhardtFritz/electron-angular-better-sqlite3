@@ -18,7 +18,7 @@ export class SettingThemeHandler
     try {
       return this.themeApi.setTheme(theme);
     } catch (error) {
-      Logger.error(`[LoadConfigHandler#process] error: ${error?.message}`);
+      Logger.error(`[LoadConfigHandler#process] error: `, error);
       throw error;
     }
   }

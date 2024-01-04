@@ -1,8 +1,7 @@
 import { EnvironmentPlugin, type Configuration } from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import * as path from 'path';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 import { rules } from './webpack.rules';
 

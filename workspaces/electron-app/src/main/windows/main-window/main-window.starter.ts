@@ -6,13 +6,13 @@ import { AppStateProvider } from '../../base/startup/app-states/app-state.provid
 export class MainWindowStarter {
   private started = false;
 
-  start(onReady: () => void) {
+  start(onReady: () => Promise<void>) {
     AppStateProvider.isReady
       .pipe(
-        map((isReady) => {
+        map(async (isReady) => {
           if (isReady && !this.started) {
             this.started = true;
-            onReady();
+            await onReady();
           }
         })
       )

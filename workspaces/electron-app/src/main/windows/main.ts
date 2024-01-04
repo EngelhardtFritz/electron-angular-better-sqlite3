@@ -40,7 +40,7 @@ export class Main {
     app.on('web-contents-created', this.openExternalLinksInDefaultBrowser);
   }
 
-  quit() {
+  quit = () => {
     // Quit when all windows are closed, except on macOS. There, it's common
     // for applications and their menu bar to stay active until the user quits
     // explicitly with Cmd + Q.
@@ -48,14 +48,22 @@ export class Main {
       Logger.debug(`[Main#quit] Shutdown app`);
       app.quit();
     }
-  }
+  };
 
   launch() {
     if (!this._instanceLock) {
       app.quit();
     } else {
       app.on('second-instance', this.preventSecondInstance);
-      app.whenReady().then(() => this.onReady());
+      app
+        .whenReady()
+        .then(() => this.onReady())
+        .catch((error: Error) => {
+          Logger.error(
+            `[Main#launch] Could not execute onReady tasks: `,
+            error
+          );
+        });
     }
   }
 
@@ -87,12 +95,12 @@ export class Main {
     }
   }
 
-  private preventSecondInstance(
+  private preventSecondInstance = (
     event: Electron.Event,
     commandLine: string[],
     workingDirectory: string,
     additionalData: unknown
-  ): void {
+  ): void => {
     // Print out data received from the second instance.
     Logger.debug(
       `[Main#preventSecondInstance] Received additionalData`,
@@ -104,16 +112,21 @@ export class Main {
       if (Main._mainWindow.isMinimized()) Main._mainWindow.restore();
       Main._mainWindow.focus();
     }
-  }
+  };
 
-  private openExternalLinksInDefaultBrowser(
+  private openExternalLinksInDefaultBrowser = (
     event: Electron.Event,
     contents: Electron.WebContents
-  ) {
+  ): void => {
     // Do not create new windows
     contents.setWindowOpenHandler((handler: Electron.HandlerDetails) => {
       // Open in default browser
-      shell.openExternal(handler.url);
+      shell.openExternal(handler.url).catch((error: Error) => {
+        Logger.error(
+          `[Main#openExternalLinksInDefaultBrowser] failed with: `,
+          error
+        );
+      });
 
       return { action: 'deny' };
     });
@@ -130,7 +143,7 @@ export class Main {
         }
       }
     );
-  }
+  };
 
   private setupUserTask(): void {
     // Reset user tasks

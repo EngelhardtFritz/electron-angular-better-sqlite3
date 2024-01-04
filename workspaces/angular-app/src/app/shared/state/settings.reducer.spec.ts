@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { reducer, initialState } from './settings.reducer';
 
 describe('Settings Reducer', () => {

@@ -5,7 +5,7 @@ export class AbstractSendService<Out> {
     throw new Error(NOT_IMPEMENTED_YET);
   }
 
-  async process(): Promise<Out> {
+  process(): Promise<Out> {
     throw new Error(NOT_IMPEMENTED_YET);
   }
 }

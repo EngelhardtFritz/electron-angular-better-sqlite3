@@ -12,10 +12,15 @@ export class IpcReceiveService {
     );
     ipcMain.on(
       service.receptionChannel(),
-      async (event: Electron.IpcMainEvent, ...parameters: any[]) => {
+      (event: Electron.IpcMainEvent, ...parameters: In[]) => {
         // Handling input
         Logger.debug(`[${service.receptionChannel()}] => `, parameters);
-        await service.process(...parameters);
+        service.process(...parameters).catch((error: Error) => {
+          Logger.error(
+            `[IpcReceiveService#on] Could not process service `,
+            error
+          );
+        });
       }
     );
   }

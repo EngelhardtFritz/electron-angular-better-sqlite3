@@ -12,7 +12,7 @@ export class IpcInvokeService {
     );
     ipcMain.handle(
       service.invokingChannel(),
-      async (event: Electron.IpcMainInvokeEvent, ...parameters: any[]) => {
+      async (event: Electron.IpcMainInvokeEvent, ...parameters: In[]) => {
         Logger.debug(`[${service.invokingChannel()}] in  => `, ...parameters);
         const output: Out = await service.process(...parameters);
         Logger.debug(`[${service.invokingChannel()}] out => `, output);

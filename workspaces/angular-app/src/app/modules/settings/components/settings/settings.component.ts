@@ -31,7 +31,7 @@ export class SettingsComponent implements OnDestroy {
     this.destroy$.complete();
   }
 
-  async requestData(): Promise<void> {
+  requestData(): void {
     this.settingsStore.dispatch(SettingsActions.loadSettingEntries());
   }
 }

@@ -3,6 +3,14 @@ import config from './forge.config';
 import { join } from 'path';
 import { MSICreator } from 'electron-wix-msi';
 
+interface IPartialPackageJson {
+  version: string;
+  description: string;
+  author: {
+    name: string;
+  };
+}
+
 /**
  * This module creates an unsigned msi installer
  * Requires the Wix toolkit v3 command line tools (http://wixtoolset.org/releases/) (explicitly the light.exe and candle.exe)
@@ -89,7 +97,9 @@ class MsiWizardProvider {
   private async readPackageJson() {
     try {
       const packageJsonString = await readFile('./package.json', 'utf-8');
-      const packageJson = JSON.parse(packageJsonString);
+      const packageJson: IPartialPackageJson = JSON.parse(
+        packageJsonString
+      ) as IPartialPackageJson;
 
       this.packageVersion = packageJson.version;
       this.packageDescription = packageJson.description;
@@ -143,7 +153,9 @@ class MsiInfoProvider {
  */
 try {
   const msiProvider = new MsiWizardProvider();
-  msiProvider.createInstaller();
+  msiProvider.createInstaller().catch((error: Error) => {
+    console.error(`[MsiWizardProvider#createInstaller] Failed: `, error);
+  });
 } catch (error) {
   console.log(`Creating the installer failed: ${error}`);
 }

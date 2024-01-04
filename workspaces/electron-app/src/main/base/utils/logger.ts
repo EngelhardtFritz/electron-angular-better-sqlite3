@@ -5,6 +5,14 @@ import * as winston from 'winston';
 import { ConfigProvider } from './config.provider';
 import { container } from 'tsyringe';
 
+interface ILogData {
+  timestamp: number;
+  level: string;
+  tag: string;
+  message: string;
+  meta: Partial<winston.Logform.TransformableInfo>;
+}
+
 export class Logger {
   private static singleton: Logger;
   private _logger: winston.Logger;
@@ -147,17 +155,21 @@ export class Logger {
     }
   );
 
-  private prepareLogData = (data: winston.Logform.TransformableInfo) => {
-    const additionalData: any = { ...data };
+  private prepareLogData = (
+    data: winston.Logform.TransformableInfo
+  ): ILogData => {
+    const additionalData: Partial<winston.Logform.TransformableInfo> = {
+      ...data,
+    };
     delete additionalData.timestamp;
     delete additionalData.level;
     delete additionalData.message;
     delete additionalData.service;
     return {
-      timestamp: data.timestamp,
+      timestamp: data.timestamp as number,
       level: data.level,
       tag: 'electron',
-      message: data.message,
+      message: data.message as string,
       meta: additionalData,
     };
   };

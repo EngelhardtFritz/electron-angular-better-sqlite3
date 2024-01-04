@@ -8,21 +8,15 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": [
-      "./tsconfig.json",
-      "./tsconfig.test.json",
-      "./workspaces/shared-lib/tsconfig.json",
-      "./workspaces/angular-app/tsconfig.json",
-      "./workspaces/electron-app/tsconfig.json"
-    ],
+    "project": true,
     "ecmaVersion": 2022,
     "sourceType": "module"
   },
   "plugins": ["eslint-plugin-import", "@typescript-eslint", "import"],
   "extends": [
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/electron",
     "plugin:import/typescript"

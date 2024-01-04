@@ -30,7 +30,7 @@ export class SettingHandler
         theme: theme ?? undefined,
       } as AppSettings;
     } catch (error) {
-      Logger.error(`[LoadConfigHandler#process] error: ${error?.message}`);
+      Logger.error(`[LoadConfigHandler#process] error: `, error);
       throw error;
     }
   }

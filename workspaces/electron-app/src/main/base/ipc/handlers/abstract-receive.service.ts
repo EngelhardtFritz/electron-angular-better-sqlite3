@@ -5,7 +5,7 @@ export class AbstractReceiveService<In> {
     throw new Error(NOT_IMPEMENTED_YET);
   }
 
-  async process(..._input: In[]): Promise<void> {
+  process(..._input: In[]): Promise<void> {
     throw new Error(NOT_IMPEMENTED_YET);
   }
 }

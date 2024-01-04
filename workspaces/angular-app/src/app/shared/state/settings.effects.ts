@@ -3,9 +3,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { switchMap } from 'rxjs/operators';
 import { SettingsActions } from './settings.actions';
-import { LanguageService } from 'src/app/shared/services/language.service';
 import { SettingsApiService } from '../../modules/settings/services/settings-api.service';
 import { AppSettings } from 'shared-lib';
+import { LanguageService } from '../services/language.service';
 
 @Injectable()
 export class SettingsEffects {
@@ -22,8 +22,8 @@ export class SettingsEffects {
               appSettings: appSettings,
             });
           })
-          .catch((error) =>
-            SettingsActions.loadSettingEntriesError(error?.message)
+          .catch((error: Error) =>
+            SettingsActions.loadSettingEntriesError({ error: error.message })
           )
       )
     );

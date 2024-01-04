@@ -18,7 +18,7 @@ export class SettingLocaleHandler
     try {
       return this.localeApi.setLocale(locale);
     } catch (error) {
-      Logger.error(`[LoadConfigHandler#process] error: ${error?.message}`);
+      Logger.error(`[LoadConfigHandler#process] error: `, error);
       throw error;
     }
   }

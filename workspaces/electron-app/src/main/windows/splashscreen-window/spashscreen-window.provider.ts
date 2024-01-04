@@ -62,22 +62,34 @@ export class SplashscreenWindowProvider {
     this._window.setAlwaysOnTop(false);
     app.focus();
 
-    return this._window;
+    return Promise.resolve(this._window);
   }
 
   private configureRenderer(): void {
     if (!app.isPackaged) {
       // Dev mode, take advantage of the live reload by loading local URL
-      this._window?.loadFile(
-        'workspaces/electron-app/src/windows/splashscreen/index.html'
-      );
+      this._window
+        ?.loadFile(
+          'workspaces/electron-app/src/windows/splashscreen/index.html'
+        )
+        .catch((error: Error) => {
+          Logger.error(
+            `[SplashscreenWindowProvider#configureRenderer] Failed to load DEV url `,
+            error
+          );
+        });
     } else {
       // Else mode, load splash screen bundle
       const indexPath = path.join(
         __dirname,
         '../renderer/splashscreen_window/index.html'
       );
-      this._window?.loadURL(`file://${indexPath}`);
+      this._window?.loadURL(`file://${indexPath}`).catch((error: Error) => {
+        Logger.error(
+          `[SplashscreenWindowProvider#configureRenderer] Failed to load PROD index.html file `,
+          error
+        );
+      });
     }
 
     Logger.debug(

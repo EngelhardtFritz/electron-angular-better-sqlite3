@@ -19,5 +19,5 @@
     },
     "types": ["node"]
   },
-  "include": ["./workspaces/electron-app/src/**/*"]
+  "include": ["./workspaces/electron-app/src/**/*", "./*.ts"]
 }

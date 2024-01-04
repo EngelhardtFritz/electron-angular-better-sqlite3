@@ -16,7 +16,7 @@ contextBridge.exposeInMainWorld('api', {
     if (WindowApiConst.RECEIVING_SAFE_CHANNELS.includes(channel)) {
       ipcRenderer.on(
         channel,
-        (_event: IpcRendererEvent, ...parameters: any[]) =>
+        (_event: IpcRendererEvent, ...parameters: Out[]) =>
           callback(parameters[0])
       );
     }

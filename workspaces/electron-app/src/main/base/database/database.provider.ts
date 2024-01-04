@@ -16,18 +16,19 @@ export class DatabaseProvider {
       );
 
       return dataSource;
-    } catch (error: any) {
+    } catch (error: unknown) {
       Logger.error(
-        `[DatabaseProvider#initializeDataSource] Could not initialize DataSource, error: ${error?.message}`
+        `[DatabaseProvider#initializeDataSource] Could not initialize DataSource, error: `,
+        error
       );
       throw error;
     }
   }
 
-  public closeDatabaseConnection() {
+  public async closeDatabaseConnection() {
     Logger.info(
       `[DatabaseProvider#closeDatabaseConnection] Closing database connection`
     );
-    AppDataSource.destroy();
+    await AppDataSource.destroy();
   }
 }

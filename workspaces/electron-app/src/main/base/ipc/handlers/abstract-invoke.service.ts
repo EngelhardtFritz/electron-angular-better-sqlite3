@@ -5,7 +5,7 @@ export class AbstractInvokeService<In, Out> {
     throw new Error(NOT_IMPEMENTED_YET);
   }
 
-  async process(..._input: In[]): Promise<Out> {
+  process(..._input: In[]): Promise<Out> {
     throw new Error(NOT_IMPEMENTED_YET);
   }
 }

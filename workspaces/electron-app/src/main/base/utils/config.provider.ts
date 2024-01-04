@@ -4,6 +4,11 @@ import * as path from 'path';
 import * as fs from 'fs-extra';
 import _ from 'lodash';
 
+interface IAppConfigs {
+  development: AppConfig;
+  production: AppConfig;
+}
+
 @singleton()
 export class ConfigProvider {
   private _appConfig!: AppConfig;
@@ -27,9 +32,11 @@ export class ConfigProvider {
     }
 
     try {
-      const appConfigs = fs.readJsonSync(path.join(__dirname, 'config.json'));
+      const appConfigs = fs.readJsonSync(
+        path.join(__dirname, 'config.json')
+      ) as IAppConfigs;
       const defaultConfig = appConfigs.development;
-      const currentConfig = appConfigs[currentEnvironment];
+      const currentConfig = appConfigs[currentEnvironment as keyof IAppConfigs];
 
       this._appConfig =
         currentEnvironment === 'development'

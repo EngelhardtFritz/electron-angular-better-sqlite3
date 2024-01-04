@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppSettings, SettingsChannel } from 'shared-lib';
-import { ElectronIpcService } from 'src/app/shared/services/electron-ipc.service';
+import { ElectronIpcService } from '../../../shared/services/electron-ipc.service';
 
 @Injectable({
   providedIn: 'root',
