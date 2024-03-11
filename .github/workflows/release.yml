@@ -80,7 +80,7 @@ jobs:
             console.log(`releaseNotes: '${releaseNotes}'`);
             core.exportVariable('RELEASE_NOTES', releaseNotes);
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
