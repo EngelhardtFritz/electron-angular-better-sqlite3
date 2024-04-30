@@ -36,7 +36,7 @@ jobs:
         with:
           python-version: '3.11.3'
       - name: Build Package With Retry
-        uses: nick-fields/retry@v2
+        uses: nick-fields/retry@v3
         with:
           timeout_minutes: 6
           max_attempts: 2
@@ -80,7 +80,7 @@ jobs:
             console.log(`releaseNotes: '${releaseNotes}'`);
             core.exportVariable('RELEASE_NOTES', releaseNotes);
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
