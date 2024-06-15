@@ -6,7 +6,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { isDevMode, importProvidersFrom } from '@angular/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { APP_ROUTES } from './app/app.routes';
 import { SettingsStateModule } from './app/shared/state/settings.state.module';
@@ -22,8 +26,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(APP_ROUTES),
+    provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
-      HttpClientModule,
       BrowserModule,
       SettingsStateModule,
       TranslateModule.forRoot({

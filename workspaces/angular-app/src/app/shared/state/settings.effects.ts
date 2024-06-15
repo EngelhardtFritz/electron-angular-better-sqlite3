@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-
-import { switchMap } from 'rxjs/operators';
 import { SettingsActions } from './settings.actions';
 import { SettingsApiService } from '../../modules/settings/services/settings-api.service';
 import { AppSettings } from 'shared-lib';
 import { LanguageService } from '../services/language.service';
+import { switchMap } from 'rxjs';
 
 @Injectable()
 export class SettingsEffects {
