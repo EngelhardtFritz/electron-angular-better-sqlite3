@@ -4,7 +4,7 @@
 
 # YourElectronApp
 
-This is a template repository for desktop app creation with [electron (v28)](https://www.electronjs.org/de/), [angular (v17)](https://angular.dev/) and [better-sqlite3 (v9)](https://github.com/WiseLibs/better-sqlite3).
+This is a template repository for desktop app creation with [electron (v30)](https://www.electronjs.org/de/), [angular (v18)](https://angular.dev/) and [better-sqlite3 (v9)](https://github.com/WiseLibs/better-sqlite3).
 
 It includes a fully (opinionated) pre configured project setup with the following:
 | Package | Usage | Available Commands (check/fixup) |
