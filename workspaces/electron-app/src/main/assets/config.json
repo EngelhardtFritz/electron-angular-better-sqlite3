@@ -6,7 +6,7 @@
     "openDevTools": true,
     "isIconAvailable": true,
     "angularPort": 4200,
-    "devPath": "D:\\Entwicklungsprojekte\\VSCode\\manga-reader"
+    "devPath": "your/dev/path"
   },
   "production": {
     "id": "production",
