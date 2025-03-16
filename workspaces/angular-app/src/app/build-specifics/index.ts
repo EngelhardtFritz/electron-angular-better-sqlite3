@@ -1,7 +1,6 @@
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
-export const extModules = [
-  StoreDevtoolsModule.instrument({
-    maxAge: 25,
-  connectInZone: true}),
-];
+export const extModules = provideStoreDevtools({
+  maxAge: 25,
+  connectInZone: true,
+});

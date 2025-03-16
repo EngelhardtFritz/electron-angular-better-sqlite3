@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SettingsAppState } from './shared/state/settings.reducer';
 import { SettingsActions } from './shared/state/settings.actions';
-import { SettingsComponent } from './modules/settings/components/settings/settings.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [SettingsComponent],
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'angular-app';

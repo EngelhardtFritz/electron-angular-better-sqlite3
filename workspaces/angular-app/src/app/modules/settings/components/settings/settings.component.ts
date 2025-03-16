@@ -3,15 +3,15 @@ import { Subject } from 'rxjs';
 import { SettingsAppState } from '../../../../shared/state/settings.reducer';
 import { Store } from '@ngrx/store';
 import { SettingsActions } from '../../../../shared/state/settings.actions';
-import { TranslateModule } from '@ngx-translate/core';
 import { NgIf } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   standalone: true,
-  imports: [NgIf, TranslateModule],
+  imports: [NgIf, TranslatePipe],
 })
 export class SettingsComponent implements OnDestroy {
   private destroy$ = new Subject();
