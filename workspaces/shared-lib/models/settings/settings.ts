@@ -1,6 +1,6 @@
 import { Theme } from './theme';
 
-export class AppSettings {
+export interface AppSettings {
   locale: string;
   theme: Theme;
 }

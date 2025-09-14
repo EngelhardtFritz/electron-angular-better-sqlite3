@@ -22,7 +22,8 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@angular/*": ["./node_modules/@angular/*"]
+      "@angular/*": ["./node_modules/@angular/*"],
+      "shared-lib": ["../shared-lib"]
     }
   },
   "angularCompilerOptions": {
@@ -31,5 +32,5 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "references": [{ "path": "../shared-lib" }]
+  "references": [{ "path": "./../shared-lib" }]
 }

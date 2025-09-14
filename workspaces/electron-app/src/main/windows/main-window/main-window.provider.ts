@@ -108,7 +108,7 @@ export class MainWindowProvider {
       iconObject = nativeImage.createFromPath(iconPath);
       // Change dock icon on MacOS
       if (iconObject && process.platform === 'darwin') {
-        app.dock.setIcon(iconObject);
+        app.dock?.setIcon(iconObject);
       }
     }
     return iconObject;

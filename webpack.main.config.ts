@@ -31,7 +31,7 @@ export const mainConfig: Configuration = {
           noErrorOnMissing: true,
         },
         {
-          from: './workspaces/angular-app/dist/angular-app',
+          from: './workspaces/angular-app/dist/angular-app/browser',
           to: '../renderer/angular_window',
           noErrorOnMissing: true,
         },
