@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 const spawn = require('child_process').spawn;
 const chokidar = require('chokidar');
 const kill = require('tree-kill');
