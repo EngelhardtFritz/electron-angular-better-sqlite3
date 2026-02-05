@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { SettingsAppState } from '../../../../shared/state/settings.reducer';
 import { Store } from '@ngrx/store';
 import { SettingsActions } from '../../../../shared/state/settings.actions';
-import { NgIf } from '@angular/common';
+
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -11,7 +11,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   standalone: true,
-  imports: [NgIf, TranslatePipe],
+  imports: [TranslatePipe],
 })
 export class SettingsComponent implements OnDestroy {
   private destroy$ = new Subject();

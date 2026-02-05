@@ -22,7 +22,6 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@angular/*": ["./node_modules/@angular/*"],
       "shared-lib": ["../shared-lib"]
     }
   },

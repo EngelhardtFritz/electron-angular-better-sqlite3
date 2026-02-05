@@ -17,6 +17,7 @@ export class LanguageService {
 
   public setLocale(locale: string): string {
     const currentLocale = this.getCurrentLocale();
+    if (locale === undefined) return currentLocale;
     if (currentLocale !== locale) {
       this.translateService.use(locale);
     }

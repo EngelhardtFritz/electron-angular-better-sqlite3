@@ -1,5 +1,7 @@
-<div class="appSettings" *ngIf="true">
-  <h2>{{ 'TEST' | translate }}</h2>
-  <div class="generalSettings">Test</div>
-  <button (click)="requestData()">Request Some Config Data</button>
-</div>
+@if (true) {
+  <div class="appSettings">
+    <h2>{{ 'TEST' | translate }}</h2>
+    <div class="generalSettings">Test</div>
+    <button (click)="requestData()">Request Some Config Data</button>
+  </div>
+}
