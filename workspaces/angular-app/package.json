@@ -28,8 +28,7 @@
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",
     "tslib": "^2.6.3",
-    "zone.js": "^0.15.0",
-    "shared-lib": "*"
+    "zone.js": "^0.15.0"
   },
   "devDependencies": {
     "@angular-builders/jest": "^19.0.0",
