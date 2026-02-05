@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { SettingsActions } from './settings.actions';
 import { SettingsApiService } from '../../modules/settings/services/settings-api.service';
@@ -8,6 +8,10 @@ import { switchMap } from 'rxjs';
 
 @Injectable()
 export class SettingsEffects {
+  private actions$ = inject(Actions);
+  private settingsApiService = inject(SettingsApiService);
+  private languageService = inject(LanguageService);
+
   loadConfigEntries$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(SettingsActions.loadSettingEntries),
@@ -27,10 +31,4 @@ export class SettingsEffects {
       )
     );
   });
-
-  constructor(
-    private actions$: Actions,
-    private settingsApiService: SettingsApiService,
-    private languageService: LanguageService
-  ) {}
 }

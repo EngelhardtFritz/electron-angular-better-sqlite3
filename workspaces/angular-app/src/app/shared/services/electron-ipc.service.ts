@@ -1,13 +1,15 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, inject } from '@angular/core';
 import { WindowApi } from 'shared-lib';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ElectronIpcService {
+  private zone = inject(NgZone);
+
   private _api!: WindowApi;
 
-  constructor(private zone: NgZone) {
+  constructor() {
     if (window && (window as Window).api) {
       this._api = (window as Window).api;
       console.log('Preloader API has been loaded successfully');

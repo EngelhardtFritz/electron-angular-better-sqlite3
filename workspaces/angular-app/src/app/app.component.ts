@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SettingsAppState } from './shared/state/settings.reducer';
 import { SettingsActions } from './shared/state/settings.actions';
@@ -12,12 +12,12 @@ import { LanguageService } from './shared/services/language.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  private settingsStore = inject<Store<SettingsAppState>>(Store);
+  private languageService = inject(LanguageService);
+
   title = 'angular-app';
 
-  constructor(
-    private settingsStore: Store<SettingsAppState>,
-    private languageService: LanguageService
-  ) {
+  constructor() {
     this.languageService.initLanguageService();
     this.settingsStore.dispatch(SettingsActions.loadSettingEntries());
   }

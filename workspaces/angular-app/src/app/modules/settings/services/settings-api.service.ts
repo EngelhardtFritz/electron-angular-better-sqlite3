@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AppSettings, SettingsChannel } from 'shared-lib';
 import { ElectronIpcService } from '../../../shared/services/electron-ipc.service';
 
@@ -6,7 +6,8 @@ import { ElectronIpcService } from '../../../shared/services/electron-ipc.servic
   providedIn: 'root',
 })
 export class SettingsApiService {
-  constructor(private electronIpcService: ElectronIpcService) {}
+  private electronIpcService = inject(ElectronIpcService);
+
 
   loadSettings(): Promise<AppSettings> {
     return this.electronIpcService.invoke(SettingsChannel.LOAD_SETTING_ENTRIES);

@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SettingsAppState } from '../../../../shared/state/settings.reducer';
 import { Store } from '@ngrx/store';
@@ -14,6 +14,8 @@ import { TranslatePipe } from '@ngx-translate/core';
   imports: [TranslatePipe],
 })
 export class SettingsComponent implements OnDestroy {
+  protected settingsStore = inject<Store<SettingsAppState>>(Store);
+
   private destroy$ = new Subject();
   protected screenWidth = 0;
 
@@ -22,7 +24,7 @@ export class SettingsComponent implements OnDestroy {
     this.screenWidth = window.innerWidth;
   }
 
-  constructor(protected settingsStore: Store<SettingsAppState>) {
+  constructor() {
     this.onResize();
   }
 
