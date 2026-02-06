@@ -12,7 +12,7 @@ class ElectronForgeWatcher {
     this.cwd = process.cwd();
     this.watchPaths = [
       path.join(this.cwd, './workspaces/electron-app/src/**/*.ts'),
-      path.join(this.cwd, './workspaces/shared-lib/.dist/**/*.ts'),
+      path.join(this.cwd, './workspaces/shared-lib/dist/**/*.ts'),
     ];
     this.ignoredPaths = '**/node_modules/*';
 

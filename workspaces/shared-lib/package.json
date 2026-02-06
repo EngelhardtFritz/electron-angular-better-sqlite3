@@ -2,11 +2,15 @@
   "name": "shared-lib",
   "version": "0.0.0",
   "description": "",
-  "main": ".dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc --build .",
-    "build:prod": "tsc --build .",
-    "watch": "tsc --build . --watch"
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build": "concurrently \"npm run build:cjs\" \"npm run build:esm\"",
+    "build:prod": "concurrently \"npm run build:cjs\" \"npm run build:esm\"",
+    "watch": "concurrently \"npm run watch:cjs\" \"npm run watch:esm\"",
+    "watch:esm": "tsc -p tsconfig.esm.json --watch",
+    "watch:cjs": "tsc -p tsconfig.cjs.json --watch"
   },
   "keywords": [],
   "author": "",

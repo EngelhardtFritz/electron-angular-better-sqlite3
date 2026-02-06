@@ -118,7 +118,7 @@ export class Logger {
     const appLogPath = this.configProvider.appConfig.devPath
       ? this.configProvider.appConfig.devPath
       : os.homedir();
-    return path.join(appLogPath, '.dist', filename);
+    return path.join(appLogPath, 'dist', filename);
   }
 
   /**

@@ -26,7 +26,6 @@ delete browserGlobals['AudioWorkletGlobalScope '];
 export default defineConfig([
   globalIgnores([
     '**/dist/**/*',
-    '**/.dist/**/*',
     '**/coverage/**/*',
     'node_modules/**/*',
     '**/node_modules/**/*',

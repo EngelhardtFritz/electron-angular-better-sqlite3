@@ -4,7 +4,6 @@ node_modules
 
 # ignore artifacts:
 dist
-.dist
 build
 coverage
 out

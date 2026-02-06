@@ -17,8 +17,8 @@
     "**/.angular": true,
     "**/angular-app/dist": false,
     "**/angular-app/.vscode": true,
-    "**/express-app/.dist": false,
-    "**/shared-lib/.dist": false
+    "**/express-app/dist": false,
+    "**/shared-lib/dist": false
   },
   "stylelint.validate": ["css", "postcss", "scss"]
 }

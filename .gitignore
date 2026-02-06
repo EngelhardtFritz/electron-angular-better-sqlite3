@@ -89,7 +89,6 @@ typings/
 out/
 
 # outDirs
-.dist
 dist
 
 # Allure
@@ -98,6 +97,9 @@ allure-results
 # System Files
 .DS_Store
 Thumbs.db
+
+# Tmp files
+your/**/*
 
 # Angular
 .angular

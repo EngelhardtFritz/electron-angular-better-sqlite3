@@ -6,5 +6,5 @@
     "strictNullChecks": true,
     "emitDecoratorMetadata": true
   },
-  "references": [{ "path": "../shared-lib" }]
+  "references": []
 }
