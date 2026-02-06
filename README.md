@@ -4,7 +4,7 @@
 
 # YourElectronApp
 
-This is a template repository for desktop app creation with [electron (v40)](https://www.electronjs.org/de/), [angular (v19)](https://angular.dev/) and [better-sqlite3 (v12)](https://github.com/WiseLibs/better-sqlite3).
+This is a template repository for desktop app creation with [electron (v40)](https://www.electronjs.org/de/), [angular (v21)](https://angular.dev/) and [better-sqlite3 (v12)](https://github.com/WiseLibs/better-sqlite3).
 
 It includes a fully (opinionated) pre configured project setup with the following:
 | Package | Usage | Available Commands (check/fixup) |
@@ -12,6 +12,7 @@ It includes a fully (opinionated) pre configured project setup with the followin
 | [prettier](https://prettier.io/) | Checks and formats all `.js`,`.jsx`,`.ts`,`.tsx`,`.json`,`.html`,`.md` files | `npm run prettier` /<br/> `npm run prettier:fix` |
 | [eslint](https://eslint.org/) | Checks and fixes all `.ts` files. | `npm run lint` /<br/> `npm run lint:fix` |
 | [stylelint](https://stylelint.io/) | Checks and fixes all `.css`,`.scss`,`.sass` files. | `npm run stylelint` /<br/> `npm run stylelint:fix` |
+| [vitest](https://vitest.dev/) | Used for testing the app including code coverage | `npm run test` |
 
 ### Workspaces
 
