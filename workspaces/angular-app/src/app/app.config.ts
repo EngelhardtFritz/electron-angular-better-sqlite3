@@ -2,7 +2,7 @@ import {
   ApplicationConfig,
   importProvidersFrom,
   isDevMode,
-  provideZoneChangeDetection,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -30,7 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideZonelessChangeDetection(),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(APP_ROUTES),
     provideTranslateService({
