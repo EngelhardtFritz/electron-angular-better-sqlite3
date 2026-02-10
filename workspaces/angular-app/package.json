@@ -25,7 +25,7 @@
     "@ngrx/operators": "^21.0.1",
     "@ngrx/store": "^21.0.1",
     "@ngrx/store-devtools": "^21.0.1",
-    "@ngx-translate/core": "^16.0.4",
+    "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^16.0.1",
     "tslib": "^2.6.3"
   },
