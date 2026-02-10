@@ -8,7 +8,7 @@ import { SettingsApiService } from '../../modules/settings/services/settings-api
 import { LanguageService } from '../services/language.service';
 
 describe('SettingsEffects', () => {
-  let actions$ = new Observable<Action>();
+  const actions$ = new Observable<Action>();
   let effects: SettingsEffects;
 
   beforeEach(() => {

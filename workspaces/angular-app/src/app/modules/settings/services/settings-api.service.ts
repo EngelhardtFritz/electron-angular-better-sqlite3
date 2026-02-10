@@ -8,7 +8,6 @@ import { ElectronIpcService } from '../../../shared/services/electron-ipc.servic
 export class SettingsApiService {
   private electronIpcService = inject(ElectronIpcService);
 
-
   loadSettings(): Promise<AppSettings> {
     return this.electronIpcService.invoke(SettingsChannel.LOAD_SETTING_ENTRIES);
   }

@@ -4,9 +4,10 @@ import { container } from 'tsyringe';
 import { Main } from './windows/main';
 import { StartupService } from './base/startup/startup.service';
 import { Logger } from './base/utils/logger';
+import { checkElectronSquirrelStartup } from './base/utils/electron.squirrel.setup';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) {
+if (checkElectronSquirrelStartup()) {
   app.quit();
 }
 

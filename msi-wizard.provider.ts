@@ -78,7 +78,7 @@ class MsiWizardProvider {
     let msiOutputPathStats;
     try {
       msiOutputPathStats = await stat(MsiWizardProvider.MSI_OUTPUT_PATH);
-    } catch (err) {
+    } catch (_err) {
       console.log(`[MsiProvider] Output path is not available.`);
     }
 
@@ -138,7 +138,7 @@ class MsiInfoProvider {
 
   public static getIconPath(): string {
     const iconPath = config.packagerConfig?.icon;
-    if (iconPath !== undefined) {
+    if (iconPath !== undefined && !Array.isArray(iconPath)) {
       return join(process.cwd(), `${iconPath}.ico`);
     }
 

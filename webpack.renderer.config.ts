@@ -11,6 +11,7 @@ rules.push({
 });
 
 export const rendererConfig: Configuration = {
+  target: 'electron-preload',
   module: {
     rules,
   },

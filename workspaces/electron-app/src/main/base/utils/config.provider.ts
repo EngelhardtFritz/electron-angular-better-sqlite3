@@ -42,7 +42,7 @@ export class ConfigProvider {
         currentEnvironment === 'development'
           ? defaultConfig
           : _.merge(defaultConfig, currentConfig);
-    } catch (err) {
+    } catch (_err) {
       // File does not exist, return default prod config
       this._appConfig = {
         id: 'production',
